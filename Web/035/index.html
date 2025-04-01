@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <title>系统紧急更新</title>
+    <style>
+        /* 蓝屏样式 */
+        body { 
+            background: #0078d7; 
+            color: white;
+            font-family: Consolas;
+            padding: 20%;
+        }
+        #progress {
+            width: 200px;
+            height: 20px;
+            border: 1px solid white;
+        }
+        #bar {
+            width: 0%;
+            height: 100%;
+            background: white;
+            transition: width 5s;
+        }
+    </style>
+</head>
+<body>
+    <h1>:( 你的设备遇到问题，需要重启</h1>
+    <p>错误代码：404_APRIL_FOOL</p>
+    <div id="progress">
+        <div id="bar"></div>
+    </div>
+
+    <script>
+        // 弹窗陷阱
+        document.addEventListener('click', () => {
+            let count = 0;
+            const bomb = () => {
+                if(count++ < 10) {
+                    confirm(`发现${count}个病毒！立即清除？`) && bomb();
+                }
+            }
+            bomb();
+        });
+
+        // 加载进度条动画
+        setTimeout(() => {
+            document.getElementById('bar').style.width = '35%';
+            setTimeout(() => document.getElementById('bar').style.width = '99%', 3000);
+        }, 1000);
+
+        // 音频播放
+        window.onload = () => new Audio('https://actions.google.com/sounds/v1/alarms/beep_short.ogg').play();
+
+        window.addEventListener('deviceorientation', (e) => {
+    document.body.style.transform = `rotate(${e.gamma}deg)`;
+});
+    </script>
+</body>
+</html>
